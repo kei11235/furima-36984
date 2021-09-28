@@ -17,17 +17,17 @@
 
 ## items テーブル
 
-| Column          | Type      | Options                        |
-| --------------- | --------- | ------------------------------ |
-| name            | string    | null: false                    |
-| explain         | text      | null: false                    |
-| category        | string    | null: false                    |
-| status          | string    | null: false                    |
-| shopping_charge | string    | null: false                    |
-| area            | string    | null: false                    |
-| days            | string    | null: false                    |
-| price           | int       | null: false                    |
-| user_id         |references | null: false, foreign_key: true |
+| Column             | Type      | Options                        |
+| ------------------ | --------- | ------------------------------ |
+| name               | string    | null: false                    |
+| explain            | text      | null: false                    |
+| category_id        | int       | null: false                    |
+| status_id          | int       | null: false                    |
+| shopping_charge_id | int       | null: false                    |
+| area_id            | int       | null: false                    |
+| days_id            | int       | null: false                    |
+| price              | int       | null: false                    |
+| user               |references | null: false, foreign_key: true |
 
 ### Association
 - belongs_to :user
@@ -37,8 +37,8 @@
 
 | Column          | Type      | Options                        |
 | --------------- | --------- | ------------------------------ |
-| user_id         |references | null: false, foreign_key: true |
-| item_id         |references | null: false, foreign_key: true |
+| user            |references | null: false, foreign_key: true |
+| item            |references | null: false, foreign_key: true |
 
 ### Association
 - belongs_to :user
@@ -49,13 +49,13 @@
 
 | Column         | Type      | Options                        |
 | -------------- | --------- | ------------------------------ |
-| postal_code    | int       | null: false                    |
+| postal_code    | string    | null: false                    |
 | prefectures    | string    | null: false                    |
 | municipalities | string    | null: false                    |
 | address        | string    | null: false                    |
 | building       | string    |                                |
-| phone_num      | int       | null: false                    |
-| order_id       |references | null: false, foreign_key: true |
+| phone_num      | string    | null: false                    |
+| order          |references | null: false, foreign_key: true |
 
 ### Association
 - belongs_to :order
