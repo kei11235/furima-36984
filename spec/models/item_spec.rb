@@ -61,6 +61,9 @@ RSpec.describe Item, type: :model do
         @item.price = 200
         @item.valid?
         expect(@item.errors.full_messages).to include('Price は￥300~￥9,999,999の範囲で値段をつけてください')
+        @item.price = 100000000
+        @item.valid?
+        expect(@item.errors.full_messages).to include('Price は￥300~￥9,999,999の範囲で値段をつけてください')
       end
       it 'priceが半角数値でなければ出品できない' do
         @item.price = '３００'
