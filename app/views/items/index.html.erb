@@ -126,7 +126,6 @@
     <div class="subtitle" >
       新規投稿商品
     </div>
-    
     <ul class='item-lists'>
     <% if @items.present? %>
       <% @items.each do |item| %>
@@ -136,9 +135,9 @@
             <%= image_tag item.image, class: "item-img" %>
 
             <%# 商品が売れていればsold outを表示しましょう %>
-            <div class='sold-out'>
+            <%# <div class='sold-out'>
               <span>Sold Out!!</span>
-            </div>
+            </div> %>
             <%# //商品が売れていればsold outを表示しましょう %>
 
           </div>
@@ -178,6 +177,7 @@
     <% end %>
     </ul>
   </div>
+
   <%# /商品一覧 %>
 </div>
 <%= link_to(new_item_path, class: 'purchase-btn') do %>
