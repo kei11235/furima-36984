@@ -1,6 +1,6 @@
 class OrderAddress
   include ActiveModel::Model
-  attr_accessor :postal_code, :area_id, :municipalities, :address, :building, :phone_num, :order, :user_id, :item_id
+  attr_accessor :postal_code, :area_id, :municipalities, :address, :building, :phone_num, :user_id, :item_id
 
   with_options presence: true do
     validates :postal_code, format: {with: /\A[0-9]{3}-[0-9]{4}\z/, message: "は「-（ハイフン）」を用いた半角数字で登録してください", allow_blank: true}
@@ -11,5 +11,9 @@ class OrderAddress
     validates :item_id
   end
   validates :area, numericality: { other_than: 1, message: 'は選択項目が足りません' }
-  
+
+  def save
+    order = Order.create(user_id: user_id, item_id: item_id)
+    Address.create(postal_code: postal_code, area_id: area_id, municipalities: municipalities, address: address, building: building, phone_num: phone_num, order_id: order.id)
+  end
 end
