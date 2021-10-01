@@ -9,7 +9,7 @@ class Item < ApplicationRecord
     validates :area_id
     validates :days_id
   end
-  validates :price, presence: true, numericality: { with: /\A[0-9]+\z/, message: 'は半角数字で入力してください', allow_blank: true },
+  validates :price, presence: true, numericality: { only_integer: true, with: /\A[0-9]+\z/, message: 'は半角数字のみで入力してください', allow_blank: true },
                     inclusion: { in: (300..9_999_999), message: 'は￥300~￥9,999,999の範囲で値段をつけてください', allow_blank: true }
 
   belongs_to :user
