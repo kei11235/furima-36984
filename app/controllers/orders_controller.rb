@@ -1,7 +1,7 @@
 class OrdersController < ApplicationController
   before_action :authenticate_user!
   before_action :move_to_root_path
-  before_actiln :set_item
+  before_action :set_item
 
   def index
     @order_address = OrderAddress.new
@@ -37,7 +37,7 @@ class OrdersController < ApplicationController
 
   def move_to_root_path
     set_item
-    redirect_to root_path if current_user.id == item.user.id || item.order
+    redirect_to root_path if current_user.id == @item.user.id || @item.order
   end
 
   def set_item
