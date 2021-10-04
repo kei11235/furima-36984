@@ -7,10 +7,11 @@ class OrderAddress
     validates :municipalities
     validates :address
     validates :phone_num, numericality: { with: /0\d{9,10}/, message: 'は半角数字のみ入力してください', allow_blank: true }
+    validates :token
     validates :user_id
     validates :item_id
   end
-  validates :area, numericality: { other_than: 1, message: 'は選択項目が足りません' }
+  validates :area_id, numericality: { other_than: 1, message: 'は選択項目が足りません' }
 
   def save
     order = Order.create(user_id: user_id, item_id: item_id)
