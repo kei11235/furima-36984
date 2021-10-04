@@ -57,12 +57,22 @@ RSpec.describe OrderAddress, type: :model do
       it 'phone_numは0から始まる半角数字でなければ購入できない' do
         @order_address.phone_num = '1234567891'
         @order_address.valid?
-        expect(@order_address.errors.full_messages).to include('Phone num は0から始まる半角数字のみ入力してください')
+        expect(@order_address.errors.full_messages).to include('Phone num は半角数字で電話番号を入力してください')
       end
       it 'phone_numは半角数字でなければ購入できない' do
         @order_address.phone_num = '０９０１２３４５６７８'
         @order_address.valid?
-        expect(@order_address.errors.full_messages).to include('Phone num は0から始まる半角数字のみ入力してください')
+        expect(@order_address.errors.full_messages).to include('Phone num は半角数字で電話番号を入力してください')
+      end
+      it 'phone_numが9桁以下では購入できない' do
+        @order_address.phone_num = '012345678'
+        @order_address.valid?
+        expect(@order_address.errors.full_messages).to include('Phone num は半角数字で電話番号を入力してください')
+      end
+      it 'phone_numが12桁以上では購入できない' do
+        @order_address.phone_num = '012345678912'
+        @order_address.valid?
+        expect(@order_address.errors.full_messages).to include('Phone num は半角数字で電話番号を入力してください')
       end
       it 'tokenが空では登録できない' do
         @order_address.token = nil

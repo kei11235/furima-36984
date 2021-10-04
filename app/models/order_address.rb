@@ -7,7 +7,7 @@ class OrderAddress
               format: { with: /\A[0-9]{3}-[0-9]{4}\z/, message: 'は「-（ハイフン）」を用いた半角数字で正しく登録してください', allow_blank: true }
     validates :municipalities
     validates :address
-    validates :phone_num, format: { with: /0{1}\d{9,10}/, message: 'は0から始まる半角数字のみ入力してください', allow_blank: true }
+    validates :phone_num, format: { with: /\A0{1}\d{9,10}\z/, message: 'は半角数字で電話番号を入力してください', allow_blank: true }
     validates :token
     validates :user_id
     validates :item_id
