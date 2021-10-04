@@ -1,4 +1,6 @@
 class OrdersController < ApplicationController
+  before_action :authenticate_user!
+  before_action :move_to_root_path
 
   def index
     @item = Item.find(params[:item_id])
@@ -29,6 +31,11 @@ class OrdersController < ApplicationController
       card: order_address_params[:token],
       currency: 'jpy'
     )
+  end
+
+  def move_to_root_path
+    item = Item.find(params[:item_id])
+    redirect_to root_path if current_user.id == item.user.id
   end
 
 end
