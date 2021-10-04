@@ -1,6 +1,7 @@
 class OrdersController < ApplicationController
 
   def index
+    @item = Item.find(params[:item_id])
     @order_address = OrderAddress.new
   end
 
@@ -11,6 +12,7 @@ class OrdersController < ApplicationController
       redirect_to root_path
     else
       render :index
+    end
   end
 
   private
