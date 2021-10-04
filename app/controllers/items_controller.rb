@@ -53,9 +53,8 @@ class ItemsController < ApplicationController
     item = Item.find(params[:id])
     if item.order
       redirect_to root_path
-    else
-      redirect_to root_path if current_user.id != item.user.id
+    elsif current_user.id != item.user.id
+      redirect_to root_path
     end
   end
-  
 end

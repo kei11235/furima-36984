@@ -9,7 +9,7 @@ RSpec.describe OrderAddress, type: :model do
   end
 
   describe '商品購入機能' do
-    context '商品が購入できる場合'do
+    context '商品が購入できる場合' do
       it 'postal_code, area_id, municipalities, address, phone_num, tokenが存在すれば購入できる' do
         expect(@order_address).to be_valid
       end
@@ -27,17 +27,17 @@ RSpec.describe OrderAddress, type: :model do
       it 'postal_codeは半角数字でないと購入できない' do
         @order_address.postal_code = '１２３-４５６７'
         @order_address.valid?
-        expect(@order_address.errors.full_messages).to include("Postal code は「-（ハイフン）」を用いた半角数字で正しく登録してください")
+        expect(@order_address.errors.full_messages).to include('Postal code は「-（ハイフン）」を用いた半角数字で正しく登録してください')
       end
       it 'postal_codeは「-」が「○○○-○○○○」の形でないと購入できない' do
         @order_address.postal_code = '1-234567'
         @order_address.valid?
-        expect(@order_address.errors.full_messages).to include("Postal code は「-（ハイフン）」を用いた半角数字で正しく登録してください")
+        expect(@order_address.errors.full_messages).to include('Postal code は「-（ハイフン）」を用いた半角数字で正しく登録してください')
       end
       it 'area_idの値が1（ユーザーが選択していない状態）では出品できない' do
         @order_address.area_id = 1
         @order_address.valid?
-        expect(@order_address.errors.full_messages).to include("Area は選択項目が足りません")
+        expect(@order_address.errors.full_messages).to include('Area は選択項目が足りません')
       end
       it 'municipalitiesが空では購入できない' do
         @order_address.municipalities = ''
@@ -57,12 +57,12 @@ RSpec.describe OrderAddress, type: :model do
       it 'phone_numは0から始まる半角数字でなければ購入できない' do
         @order_address.phone_num = '1234567891'
         @order_address.valid?
-        expect(@order_address.errors.full_messages).to include("Phone num は0から始まる半角数字のみ入力してください")
+        expect(@order_address.errors.full_messages).to include('Phone num は0から始まる半角数字のみ入力してください')
       end
       it 'phone_numは半角数字でなければ購入できない' do
         @order_address.phone_num = '０９０１２３４５６７８'
         @order_address.valid?
-        expect(@order_address.errors.full_messages).to include("Phone num は0から始まる半角数字のみ入力してください")
+        expect(@order_address.errors.full_messages).to include('Phone num は0から始まる半角数字のみ入力してください')
       end
       it 'tokenが空では登録できない' do
         @order_address.token = nil
