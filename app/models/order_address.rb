@@ -1,6 +1,6 @@
 class OrderAddress
   include ActiveModel::Model
-  attr_accessor :postal_code, :area_id, :municipalities, :address, :building, :phone_num, :user_id, :item_id
+  attr_accessor :postal_code, :area_id, :municipalities, :address, :building, :phone_num, :token, :user_id, :item_id
 
   with_options presence: true do
     validates :postal_code, format: {with: /\A[0-9]{3}-[0-9]{4}\z/, message: "は「-（ハイフン）」を用いた半角数字で登録してください", allow_blank: true}
