@@ -3,10 +3,10 @@ class OrderAddress
   attr_accessor :postal_code, :area_id, :municipalities, :address, :building, :phone_num, :token, :user_id, :item_id
 
   with_options presence: true do
-    validates :postal_code, format: {with: /\A[0-9]{3}-[0-9]{4}\z/, message: "は「-（ハイフン）」を用いた半角数字で登録してください", allow_blank: true}
+    validates :postal_code, format: {with: /\A[0-9]{3}-[0-9]{4}\z/, message: "は「-（ハイフン）」を用いた半角数字で正しく登録してください", allow_blank: true}
     validates :municipalities
     validates :address
-    validates :phone_num, numericality: { with: /0\d{9,10}/, message: 'は半角数字のみ入力してください', allow_blank: true }
+    validates :phone_num, format: { with: /0{1}\d{9,10}/, message: 'は0から始まる半角数字のみ入力してください', allow_blank: true }
     validates :token
     validates :user_id
     validates :item_id
