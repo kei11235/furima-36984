@@ -50,7 +50,7 @@
 | Column         | Type      | Options                        |
 | -------------- | --------- | ------------------------------ |
 | postal_code    | string    | null: false                    |
-| prefectures    | string    | null: false                    |
+| area           | int       | null: false                    |
 | municipalities | string    | null: false                    |
 | address        | string    | null: false                    |
 | building       | string    |                                |

@@ -13,6 +13,7 @@ class Item < ApplicationRecord
                     inclusion: { in: (300..9_999_999), message: 'は￥300~￥9,999,999の範囲で値段をつけてください', allow_blank: true }
 
   belongs_to :user
+  has_one :order
   has_one_attached :image
 
   extend ActiveHash::Associations::ActiveRecordExtensions
